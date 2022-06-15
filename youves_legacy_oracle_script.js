@@ -11,9 +11,9 @@ const PREVIOUS_EPOCH_START_ISO = new Date(PREVIOUS_EPOCH_START_MILLIS).toISOStri
 const PREVIOUS_EPOCH_END_ISO = new Date(PREVIOUS_EPOCH_END_MILLIS).toISOString()
 
 // for index to USDT
-const BINANCE_SYMBOLS = ['UNIUSDT', 'CAKEUSDT', 'LUNAUSDT', 'LINKUSDT', 'AAVEUSDT']
-const KUCOIN_SYMBOLS = ['UNI-USDT', 'CAKE-USDT', 'LUNA-USDT', 'LINK-USDT', 'AAVE-USDT']
-const GATEIO_SYMBOLS = ['UNI_USDT', 'CAKE_USDT', 'LUNA_USDT', 'LINK_USDT', 'AAVE_USDT']
+const BINANCE_SYMBOLS = ['UNIUSDT', 'CAKEUSDT', 'LINKUSDT', 'AAVEUSDT']
+const KUCOIN_SYMBOLS = ['UNI-USDT', 'CAKE-USDT', 'LINK-USDT', 'AAVE-USDT']
+const GATEIO_SYMBOLS = ['UNI_USDT', 'CAKE_USDT', 'LINK_USDT', 'AAVE_USDT']
 
 // for USDT<>USD
 const COINBASE_SYMBOLS = ['BTC-USD','XTZ-USD','USDT-USD']
@@ -37,8 +37,8 @@ const KUCOIN_CONFIG = { 'url': KUCOIN_TEMPLATE, 'exchange_id': 'KUC', 'timestamp
 const GATE_IO_CONFIG = { 'url': GATE_IO_TEMPLATE, 'exchange_id': 'GAT', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': 'a519944feacca0bfecac4f6edbc04ea1f161dc8cb4658a2768a9dc56d5cdddf9' }
 
 const BINANCE_US_CONFIG = {'url':BINANCE_US_TEMPLATE,'exchange_id':'BNU', 'timestamp_factor':1, 'timestamp_index':0, 'close_index':4, 'certificate': 'b68fb71edd6b691a42a5d79b1bc4df225782229112ed52f1ba3c1ded258c8e31' }
-const COINBASE_CONFIG = {'url':COINBASE_TEMPLATE, 'exchange_id':'CBP', 'timestamp_factor':1000, 'timestamp_index':0, 'close_index':4, 'certificate': 'd6487de59f4bbf86bc432f81904fecff028350e8f5bf08eb1fe617b7a161c5ca'}
-const BITFINEX_CONFIG = {'url':BITFINEX_TEMPLATE, 'exchange_id':'BFX', 'timestamp_factor':1,'timestamp_index':0, 'close_index':2, 'certificate': 'ab7283ac13db585fe1e4ea00fdc132bbbfa0138ada9dfe17867d8dc6cf5e70ef' }
+const COINBASE_CONFIG = {'url':COINBASE_TEMPLATE, 'exchange_id':'CBP', 'timestamp_factor':1000, 'timestamp_index':0, 'close_index':4, 'certificate': '8cad9a3d4efc90bfe95f5b1b25515c236f12095edfb76bc6ef8345ddea89f88b'}
+const BITFINEX_CONFIG = {'url':BITFINEX_TEMPLATE, 'exchange_id':'BFX', 'timestamp_factor':1,'timestamp_index':0, 'close_index':2, 'certificate': 'ca9bd1fe693926034b7d8850ed172c75886acbda28ff9c803872c0d411ea27c0' }
 
 const INITIAL_PRICES = {
     'AAVEUSD': 150.80,
@@ -126,7 +126,6 @@ Promise.allSettled(promises).then((results) => {
     const indexPrice = LAST_REBALANCING_PRICE * PRICE_PRECISION * (
         WEIGHTS['UNI'] * (median(prices['UNIUSDT']) / INITIAL_PRICES['UNIUSD']) +
         WEIGHTS['LINK'] * (median(prices['LINKUSDT']) / INITIAL_PRICES['LINKUSD']) +
-        WEIGHTS['LUNA'] * (median(prices['LUNAUSDT']) / INITIAL_PRICES['LUNAUSD']) +
         WEIGHTS['CAKE'] * (median(prices['CAKEUSDT']) / INITIAL_PRICES['CAKEUSD']) +
         WEIGHTS['AAVE'] * (median(prices['AAVEUSDT']) / INITIAL_PRICES['AAVEUSD'])
     ) / median(prices['USDTUSD'])
