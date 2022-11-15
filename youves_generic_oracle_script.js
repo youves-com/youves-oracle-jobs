@@ -47,7 +47,7 @@ const BINANCE_US_CONFIG = {'url':BINANCE_US_TEMPLATE,'exchange_id':'BNU', 'times
 const COINBASE_CONFIG = {'url':COINBASE_TEMPLATE, 'exchange_id':'CBP', 'timestamp_factor':1000, 'timestamp_index':0, 'close_index':4, 'certificate': '8cad9a3d4efc90bfe95f5b1b25515c236f12095edfb76bc6ef8345ddea89f88b'} 
 const BITFINEX_CONFIG = {'url':BITFINEX_TEMPLATE, 'exchange_id':'BFX', 'timestamp_factor':1,'timestamp_index':0, 'close_index':2, 'certificate': 'ca9bd1fe693926034b7d8850ed172c75886acbda28ff9c803872c0d411ea27c0' } 
 
-const ALPHAVANTAGE_CONFIG = {'url':ALPHAVANTAGE_TEMPLATE, 'exchange_id':'ALV', 'timestamp_factor':1,'timestamp_index':5, 'close_index':4, 'certificate': '4e7c41cb06838c81116bda038911ec17376742261d79f8389d4c563741934413' }
+const ALPHAVANTAGE_CONFIG = {'url':ALPHAVANTAGE_TEMPLATE, 'exchange_id':'ALV', 'timestamp_factor':1,'timestamp_index':5, 'close_index':4, 'certificate': '9795effec794cb26bebb29dd250e972e941a490989d029df1960a5144db6d850' }
 const ONE_FORGE_CONFIG = {'url':ONE_FORGE_TEMPLATE, 'exchange_id':'1FR', 'timestamp_factor':1,'timestamp_index':2, 'close_index':0, 'certificate': '1c61847783ae60e64cb984a305139fe1b6c27792c0dfc632976405110e1813c7' }
 const CURRENCY_API_CONFIG = {'url':CURRENCY_API_TEMPLATE, 'exchange_id':'CAP', 'timestamp_factor':1000,'timestamp_index':1, 'close_index':2, 'certificate': '3b09a02b3a136d0d6d9202a7a706ea22e79038313f7bf2b8769cc221bab2ac08' }
 
