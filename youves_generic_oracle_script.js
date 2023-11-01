@@ -21,8 +21,8 @@ const FOREX_PAIRS = [['XAU', 'USD'], ['CHF', 'USD'], ['EUR', 'USD']]
 const PRICE_PRECISION = 10**6
 
 // for CHF, EUR, XAU
+const TWELVEDATA_API_TEMPLATE= `https://api.twelvedata.com/exchange_rate?symbol=<<FROM>>/<<TO>>&apikey=${environment('TWELVEDATA_API_KEY')}`
 const ONE_FORGE_TEMPLATE = `https://api.1forge.com/convert?from=<<FROM>>&to=<<TO>>&quantity=1&api_key=${environment('ONE_FORGE_API_KEY')}` 
-const ALPHAVANTAGE_TEMPLATE = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=<<FROM>>&to_currency=<<TO>>&apikey=${environment('ALPHAVANTAGE_API_KEY')}`
 const CURRENCY_API_TEMPLATE = `https://currencyapi.net/api/v1/convert?&from=<<FROM>>&to=<<TO>>&amount=1&output=JSON&key=${environment('CURRENCY_API_KEY')}`
 
 // for XAU
@@ -38,19 +38,20 @@ const GATE_IO_TEMPLATE = `https://api.gateio.ws/api/v4/spot/candlesticks/?curren
 const BINANCE_US_TEMPLATE = `https://api.binance.us/api/v3/klines?symbol=<<FROM>><<TO>>&interval=15m&startTime=${PREVIOUS_EPOCH_START_MILLIS}&endTime=${PREVIOUS_EPOCH_END_MILLIS}`
 const COINBASE_TEMPLATE = `https://api.pro.coinbase.com/products/<<FROM>>-<<TO>>/candles?granularity=900&start=${PREVIOUS_EPOCH_START_ISO}&end=${PREVIOUS_EPOCH_END_ISO}`
 const BITFINEX_TEMPLATE = `https://api-pub.bitfinex.com/v2/candles/trade:15m:t<<FROM>><<TO>>/hist?start=${PREVIOUS_EPOCH_START_MILLIS}&end=${PREVIOUS_EPOCH_END_MILLIS}`
+const KRAKEN_TEMPLATE = `https://api.kraken.com/0/public/OHLC?pair=<<FROM>><<TO>>&interval=15&since=${PREVIOUS_EPOCH_START_SECONDS}`
 
-const BINANCE_CONFIG = { 'url': BINANCE_TEMPLATE, 'exchange_id': 'BNN', 'timestamp_factor': 1, 'timestamp_index': 0, 'close_index': 4, 'certificate': '7fb8a999a18ad88559cbceb886f5e029324ac3848a0b6b44dbd1747f4fd58feb' } 
-const KUCOIN_CONFIG = { 'url': KUCOIN_TEMPLATE, 'exchange_id': 'KUC', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': 'd0e255e2dd1b6888a3d2eb2f844fb5f7a6cc70dbfbed25c0b8be5576985336a9' } 
-const GATE_IO_CONFIG = { 'url': GATE_IO_TEMPLATE, 'exchange_id': 'GAT', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': '928f68fcb20ae79e849ea2a1a45468a4c08e5114eed9303df6c7b862f20cd966' } 
+const BINANCE_CONFIG = { 'url': BINANCE_TEMPLATE, 'exchange_id': 'BNN', 'timestamp_factor': 1, 'timestamp_index': 0, 'close_index': 4, 'certificate': '427cda8bf433c2be42c7a12604208a826314f6ea0aa0064459807a6e7d4eb174' } 
+const KUCOIN_CONFIG = { 'url': KUCOIN_TEMPLATE, 'exchange_id': 'KUC', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': 'c5ee9c223a618554983c7bc6a4f9eff0c73c5f56d706de2cb122a79dec5f37bc' } 
+const GATE_IO_CONFIG = { 'url': GATE_IO_TEMPLATE, 'exchange_id': 'GAT', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': '077efad97c777defb43eedfc26ad42d8a15872af8b2fbd1ab151fd32310d48cd' } 
 
+const BINANCE_US_CONFIG = {'url':BINANCE_US_TEMPLATE,'exchange_id':'BNU', 'timestamp_factor':1, 'timestamp_index':0, 'close_index':4, 'certificate': '1dfefb84d8fd578e3715ff3f602c1c4fdad67c80a61ad4a47f800295d5334988' } 
+const COINBASE_CONFIG = {'url':COINBASE_TEMPLATE, 'exchange_id':'CBP', 'timestamp_factor':1000, 'timestamp_index':0, 'close_index':4, 'certificate': '4cf4dfa51e4dd8b8006dfa5f013e9d479b6485c000ee1526c8b3187856c74c5d'} 
+const BITFINEX_CONFIG = {'url':BITFINEX_TEMPLATE, 'exchange_id':'BFX', 'timestamp_factor':1,'timestamp_index':0, 'close_index':2, 'certificate': '1c1d5438a493b0619f9bad45ec75e232555a69f201c28e2b74b737b76378365b' } 
+const KRAKEN_CONFIG = { 'url': KRAKEN_TEMPLATE, 'exchange_id': 'KRK', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': 'af871727cd625f7266f63058c3f395997ec5e6075e7a01a7c33e705a8be3fc38' }
 
-const BINANCE_US_CONFIG = {'url':BINANCE_US_TEMPLATE,'exchange_id':'BNU', 'timestamp_factor':1, 'timestamp_index':0, 'close_index':4, 'certificate': '0a4a5abd30c1258c20d950edf36b04ac2638ce8f0f60a1b56d39491de5706c20' } 
-const COINBASE_CONFIG = {'url':COINBASE_TEMPLATE, 'exchange_id':'CBP', 'timestamp_factor':1000, 'timestamp_index':0, 'close_index':4, 'certificate': '8cad9a3d4efc90bfe95f5b1b25515c236f12095edfb76bc6ef8345ddea89f88b'} 
-const BITFINEX_CONFIG = {'url':BITFINEX_TEMPLATE, 'exchange_id':'BFX', 'timestamp_factor':1,'timestamp_index':0, 'close_index':2, 'certificate': 'ca9bd1fe693926034b7d8850ed172c75886acbda28ff9c803872c0d411ea27c0' } 
-
-const ALPHAVANTAGE_CONFIG = {'url':ALPHAVANTAGE_TEMPLATE, 'exchange_id':'ALV', 'timestamp_factor':1,'timestamp_index':5, 'close_index':4, 'certificate': '4e7c41cb06838c81116bda038911ec17376742261d79f8389d4c563741934413' }
-const ONE_FORGE_CONFIG = {'url':ONE_FORGE_TEMPLATE, 'exchange_id':'1FR', 'timestamp_factor':1,'timestamp_index':2, 'close_index':0, 'certificate': '1c61847783ae60e64cb984a305139fe1b6c27792c0dfc632976405110e1813c7' }
-const CURRENCY_API_CONFIG = {'url':CURRENCY_API_TEMPLATE, 'exchange_id':'CAP', 'timestamp_factor':1000,'timestamp_index':1, 'close_index':2, 'certificate': '3b09a02b3a136d0d6d9202a7a706ea22e79038313f7bf2b8769cc221bab2ac08' }
+const TWELVEDATA_API_CONFIG = {'url':TWELVEDATA_API_TEMPLATE, 'exchange_id':'12D', 'timestamp_factor':1000,'timestamp_index':2, 'close_index':1, 'certificate': '10a28b37065a6493a39f29d7f39634ec0e76ab54923665f0a286dd3006114718' }
+const ONE_FORGE_CONFIG = {'url':ONE_FORGE_TEMPLATE, 'exchange_id':'1FR', 'timestamp_factor':1,'timestamp_index':2, 'close_index':0, 'certificate': '306b7629c64bba2d12b847e37bf491e1c0476e1979f9a2482ba978f04fb5bd65' }
+const CURRENCY_API_CONFIG = {'url':CURRENCY_API_TEMPLATE, 'exchange_id':'CAP', 'timestamp_factor':1000,'timestamp_index':1, 'close_index':2, 'certificate': '5bf5afca3f0a8eacea803eb3d0c9ea08becdcdf8b84fe750c6e96103bc3c95b2' }
 
 const fetch = (config, pairs) => {
     return pairs.map(pair => {
@@ -63,7 +64,7 @@ const fetch = (config, pairs) => {
             }
 
             httpGET(url,
-                {},
+                { "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36" },
                 (rawResponse, certificate) => {
                     let response = JSON.parse(rawResponse)
                     if (config.exchange_id === "KUC") {
@@ -82,10 +83,18 @@ const fetch = (config, pairs) => {
                     if (config.exchange_id == "1FR") {
                         response = [Object.values(response)]
                     } 
-                    
+
+                    if (config.exchange_id == "12D") {
+                        response = [Object.values(response)]
+                    } 
+
                     if (config.exchange_id == "CAP") {
                         response = [Object.values(response)]
                         response[0][2] = response[0][2]['result']
+                    }
+
+                    if (config.exchange_id == "KRK") {
+                        response = Object.values(response['result'])[0]
                     }
 
                     if(certificate === config.certificate){
@@ -130,7 +139,7 @@ const promises = [
     ...fetch(BINANCE_US_CONFIG, FIAT_RAMP_PAIRS),
     ...fetch(COINBASE_CONFIG, FIAT_RAMP_PAIRS),
     ...fetch(BITFINEX_CONFIG, FIAT_RAMP_PAIRS),
-    ...fetch(ALPHAVANTAGE_CONFIG, FOREX_PAIRS),
+    ...fetch(TWELVEDATA_API_CONFIG, FOREX_PAIRS),
     ...fetch(ONE_FORGE_CONFIG, FOREX_PAIRS),
     ...fetch(CURRENCY_API_CONFIG, FOREX_PAIRS)
 ]
@@ -156,4 +165,3 @@ Promise.allSettled(promises).then((results) => {
     
     fulfill(oraclePayload)
 })
-
