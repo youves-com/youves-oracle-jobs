@@ -51,7 +51,7 @@ const KRAKEN_CONFIG = { 'url': KRAKEN_TEMPLATE, 'exchange_id': 'KRK', 'timestamp
 
 const TWELVEDATA_API_CONFIG = {'url':TWELVEDATA_API_TEMPLATE, 'exchange_id':'12D', 'timestamp_factor':1000,'timestamp_index':2, 'close_index':1, 'certificate': '10a28b37065a6493a39f29d7f39634ec0e76ab54923665f0a286dd3006114718' }
 const ONE_FORGE_CONFIG = {'url':ONE_FORGE_TEMPLATE, 'exchange_id':'1FR', 'timestamp_factor':1,'timestamp_index':2, 'close_index':0, 'certificate': '306b7629c64bba2d12b847e37bf491e1c0476e1979f9a2482ba978f04fb5bd65' }
-const CURRENCY_API_CONFIG = {'url':CURRENCY_API_TEMPLATE, 'exchange_id':'CAP', 'timestamp_factor':1000,'timestamp_index':1, 'close_index':2, 'certificate': '5bf5afca3f0a8eacea803eb3d0c9ea08becdcdf8b84fe750c6e96103bc3c95b2' }
+const CURRENCY_API_CONFIG = {'url':CURRENCY_API_TEMPLATE, 'exchange_id':'CAP', 'timestamp_factor':1000,'timestamp_index':1, 'close_index':2, 'certificate': 'ebe6d0aeba472a3a614422c1ed3fc4e7c57d7919cd0077df122be3c98aa0006a' }
 
 const fetch = (config, pairs) => {
     return pairs.map(pair => {
