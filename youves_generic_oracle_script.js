@@ -47,7 +47,7 @@ const GATE_IO_CONFIG = { 'url': GATE_IO_TEMPLATE, 'exchange_id': 'GAT', 'timesta
 const BINANCE_US_CONFIG = {'url':BINANCE_US_TEMPLATE,'exchange_id':'BNU', 'timestamp_factor':1, 'timestamp_index':0, 'close_index':4, 'certificate': '1dfefb84d8fd578e3715ff3f602c1c4fdad67c80a61ad4a47f800295d5334988' } 
 const COINBASE_CONFIG = {'url':COINBASE_TEMPLATE, 'exchange_id':'CBP', 'timestamp_factor':1000, 'timestamp_index':0, 'close_index':4, 'certificate': '4cf4dfa51e4dd8b8006dfa5f013e9d479b6485c000ee1526c8b3187856c74c5d'} 
 const BITFINEX_CONFIG = {'url':BITFINEX_TEMPLATE, 'exchange_id':'BFX', 'timestamp_factor':1,'timestamp_index':0, 'close_index':2, 'certificate': '1c1d5438a493b0619f9bad45ec75e232555a69f201c28e2b74b737b76378365b' } 
-const KRAKEN_CONFIG = { 'url': KRAKEN_TEMPLATE, 'exchange_id': 'KRK', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': 'af871727cd625f7266f63058c3f395997ec5e6075e7a01a7c33e705a8be3fc38' }
+const KRAKEN_CONFIG = { 'url': KRAKEN_TEMPLATE, 'exchange_id': 'KRK', 'timestamp_factor': 1000, 'timestamp_index': 0, 'close_index': 2, 'certificate': '5c21a3056249befc3f4edf0becc3fd9f1e96c1ddf46539d8544e738a813bd71b' }
 
 const TWELVEDATA_API_CONFIG = {'url':TWELVEDATA_API_TEMPLATE, 'exchange_id':'12D', 'timestamp_factor':1000,'timestamp_index':2, 'close_index':1, 'certificate': '10a28b37065a6493a39f29d7f39634ec0e76ab54923665f0a286dd3006114718' }
 const ONE_FORGE_CONFIG = {'url':ONE_FORGE_TEMPLATE, 'exchange_id':'1FR', 'timestamp_factor':1,'timestamp_index':2, 'close_index':0, 'certificate': '306b7629c64bba2d12b847e37bf491e1c0476e1979f9a2482ba978f04fb5bd65' }
